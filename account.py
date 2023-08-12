@@ -3,20 +3,28 @@ class Account:
         self.__account_name = name
         self.__account_balance = 0.00
 
-    def deposit(self, amount: float) -> bool:
+    def deposit(self, amount) -> bool:
         """
-        Adds money to balance
+        Add money
         """
+        try:
+            amount = float(amount)
+        except ValueError:
+            return False
         if amount <= 0:
             return False
         else:
             self.__account_balance += amount
             return True
 
-    def withdrawal(self, amount: float) -> bool:
+    def withdrawal(self, amount) -> bool:
         """
-        Subtracts money from balance
+        Subtract Money
         """
+        try:
+            amount = float(amount)
+        except ValueError:
+            return False
         if amount <= 0 or amount > self.__account_balance:
             return False
         else:
@@ -25,13 +33,12 @@ class Account:
 
     def get_balance(self) -> float:
         """
-        Gets private variable account_balance
+        Retreive balance of account
         """
         return self.__account_balance
 
     def get_name(self) -> str:
         """
-        Gets private variable account_name
+        Retreive name on account
         """
         return self.__account_name
-
