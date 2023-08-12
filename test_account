@@ -1,1 +1,18 @@
+import pytest
+import account
 
+
+
+def test_deposit():
+    assert pytest.raises(ValueError, account.Account.deposit, 'self', amount='l')
+    assert pytest.raises(ValueError, account.Account.deposit, 'self', amount='')
+    assert account.Account.deposit(amount=-3) == False
+    assert account.Account.deposit(amount=0) == False
+    assert account.Account.deposit(amount=300) == True
+
+def test_withdrawal():
+    assert pytest.raises(ValueError, account.Account.deposit, 'self', amount='l')
+    assert pytest.raises(ValueError, account.Account.deposit, 'self', amount='')
+    assert account.Account.deposit(amount=-3) == False
+    assert account.Account.deposit(amount=0) == False
+    assert account.Account.deposit(amount=300) == False
